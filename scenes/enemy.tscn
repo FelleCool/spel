@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bk8yy2mnpogbo"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_1y6ao"]
+[ext_resource type="Texture2D" uid="uid://ckj1fx4gh45uy" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_fyeyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sywcf"]
+atlas = ExtResource("1_fyeyl")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anvke"]
+atlas = ExtResource("1_fyeyl")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_802b3"]
+atlas = ExtResource("1_fyeyl")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw87c"]
+atlas = ExtResource("1_fyeyl")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkhxd"]
+atlas = ExtResource("1_fyeyl")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmcii"]
+atlas = ExtResource("1_fyeyl")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdfa0"]
+atlas = ExtResource("1_fyeyl")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u80so"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sywcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anvke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_802b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw87c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkhxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmcii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdfa0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u76q4"]
+radius = 20.0
+height = 60.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_1y6ao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u80so")
+autoplay = "default"
+frame_progress = 0.339202
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_u76q4")
+disabled = true

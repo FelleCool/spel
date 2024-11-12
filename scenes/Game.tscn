@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bxa0p8nbbp0lh"]
+[gd_scene load_steps=47 format=4 uid="uid://bxa0p8nbbp0lh"]
 
 [ext_resource type="Texture2D" uid="uid://cffedxdpa4xgc" path="res://assets/Terrain/Ground/Tilemap_Flat.png" id="2_34ovp"]
 [ext_resource type="Texture2D" uid="uid://bhsd4xoln4is2" path="res://assets/Terrain/Ground/Tilemap_Elevation.png" id="3_g131m"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://yax3l78nx2dw" path="res://assets/Deco/09.png" id="21_i5nvl"]
 [ext_resource type="PackedScene" uid="uid://blbvdtuoosf72" path="res://scenes/Player.tscn" id="22_3a5a6"]
 [ext_resource type="Texture2D" uid="uid://bc577tq3hhk8e" path="res://assets/Deco/10.png" id="22_g76f6"]
+[ext_resource type="Script" path="res://scripts/EnemySpawner.cs" id="23_543gy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nubbk"]
 texture = ExtResource("2_34ovp")
@@ -194,13 +195,16 @@ sources/17 = SubResource("TileSetAtlasSource_4dx8h")
 format = 2
 
 [node name="terrain" type="TileMapLayer" parent="TileMap"]
-tile_map_data = PackedByteArray(0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAFAAUAAAAAAAAAAAAJAAUAAAAEAAAAAAANAAUAAAAEAAAAAAARAAUAAAAIAAAAAAARAAkAAAAIAAQAAAARAA0AAAAIAAQAAAANAAkAAAAEAAQAAAANAA0AAAAEAAQAAAAJAA0AAAAEAAQAAAAJAAkAAAAEAAQAAAAFAAkAAAAAAAQAAAAFAA0AAAAAAAQAAAAFABEAAAAAAAgAAAAJABEAAAAEAAgAAAARABEAAAAIAAgAAAANABEAAAAEAAgAAAARAA4AAAAIAAQAAAA=")
 tile_set = SubResource("TileSet_wd8x5")
 
 [node name="entetis" type="TileMapLayer" parent="TileMap"]
 
 [node name="obsticols" type="TileMapLayer" parent="TileMap"]
-tile_map_data = PackedByteArray(0, 0, 9, 0, 9, 0, 11, 0, 0, 0, 0, 0, 0, 0, 2, 0, 4, 0, 11, 0, 0, 0, 0, 0, 0, 0, 8, 0, 2, 0, 11, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAJAAkACwAAAAAAAAACAAQACwAAAAAAAAAIAAIACwAAAAAAAAA=")
 tile_set = SubResource("TileSet_x4e1a")
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("23_543gy")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("22_3a5a6")]
