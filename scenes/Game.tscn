@@ -204,7 +204,7 @@ tile_set = SubResource("TileSet_wd8x5")
 tile_map_data = PackedByteArray("AAAJAAkACwAAAAAAAAACAAQACwAAAAAAAAAIAAIACwAAAAAAAAA=")
 tile_set = SubResource("TileSet_x4e1a")
 
+[node name="CharacterBody2D" parent="." instance=ExtResource("22_3a5a6")]
+
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("23_543gy")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("22_3a5a6")]

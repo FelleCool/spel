@@ -9,11 +9,8 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 
-		
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		// Hämta inputriktning och hantera rörelse/avstanning
+		Vector2 direction = Input.GetVector("left", "right", "up", "down");
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
@@ -25,7 +22,13 @@ public partial class Player : CharacterBody2D
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
 		}
 
+		// Uppdatera hastighet och spelares position
 		Velocity = velocity;
+
+		// Uppdatera spelarens position i GlobalData
+		GlobalData globalData = (GlobalData)GetNode("/root/GlobalData"); 
+		globalData.PlayerPosition = GlobalPosition;
+
 		MoveAndSlide();
 	}
 }
