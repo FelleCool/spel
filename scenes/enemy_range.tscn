@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbyvf7m261rem"]
+
+[ext_resource type="Texture2D" uid="uid://c1e28cu8o1svd" path="res://assets/Factions/Goblins/Troops/TNT/Red/TNT_Red.png" id="1_stlpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_401do"]
+atlas = ExtResource("1_stlpn")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfxow"]
+atlas = ExtResource("1_stlpn")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14n6f"]
+atlas = ExtResource("1_stlpn")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikqkh"]
+atlas = ExtResource("1_stlpn")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3roop"]
+atlas = ExtResource("1_stlpn")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6um1"]
+atlas = ExtResource("1_stlpn")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2f8xr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_401do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfxow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14n6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikqkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3roop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6um1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86qym"]
+radius = 277.083
+height = 554.167
+
+[node name="enemyRange" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2f8xr")
+autoplay = "default"
+frame_progress = 0.201957
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -1.5516
+shape = SubResource("CapsuleShape2D_86qym")

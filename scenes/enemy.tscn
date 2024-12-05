@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bk8yy2mnpogbo"]
 
-[ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_1y6ao"]
+[ext_resource type="Script" path="res://scripts/EnemyAI.cs" id="1_e8uyg"]
 [ext_resource type="Texture2D" uid="uid://ckj1fx4gh45uy" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_fyeyl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sywcf"]
@@ -65,7 +65,8 @@ radius = 20.0
 height = 60.0
 
 [node name="Enemy" type="CharacterBody2D"]
-script = ExtResource("1_1y6ao")
+script = ExtResource("1_e8uyg")
+Player = NodePath("")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u80so")
@@ -75,4 +76,3 @@ frame_progress = 0.339202
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_u76q4")
-disabled = true
