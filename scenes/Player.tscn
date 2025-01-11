@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://blbvdtuoosf72"]
+[gd_scene load_steps=54 format=3 uid="uid://blbvdtuoosf72"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_30ty6"]
 [ext_resource type="Texture2D" uid="uid://b5ud386r2pymd" path="res://assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_grmqk"]
@@ -386,19 +386,28 @@ animations = [{
 radius = 22.0
 height = 62.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n2f23"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_30ty6")
+attackInterval = 10.0
+metadata/hp = 0
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSpriteD2" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, 8)
 scale = Vector2(1.10416, 0.953128)
 sprite_frames = SubResource("SpriteFrames_wmqov")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.849992
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 12)
 shape = SubResource("CapsuleShape2D_17tpa")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+top_level = true
+material = SubResource("CanvasItemMaterial_n2f23")
+target_position = Vector2(102, -30)
