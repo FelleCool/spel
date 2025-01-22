@@ -4,17 +4,16 @@ using System;
 public partial class EnemyAI : CharacterBody2D
 {
     [Export] public float Speed = 100f; // Fiendens rörelsehastighet
-    
-    // Uppdatera spelarens position i GlobalData
+    [Export] public float hp = 100;
 		
 
     public override void _Ready()
     {
-        
+        AddToGroup("fiender");
     }
-    private void findAndMoveToPlayer(){
-         GlobalData globalData = (GlobalData)GetNode("/root/GlobalData"); 
-		Vector2 player = globalData.PlayerPosition;
+    public void findAndMoveToPlayer(Vector2 playerPosition)
+    {
+        Vector2 player = playerPosition;
 
         // Beräkna riktningen mot spelaren
         Vector2 direction = (player - GlobalPosition).Normalized();
@@ -23,13 +22,8 @@ public partial class EnemyAI : CharacterBody2D
         Velocity = direction * Speed;
     }
 
-    private void Attack(){
-        
-    }
-
     public override void _PhysicsProcess(double delta)
     {
-       findAndMoveToPlayer();
         // Använd MoveAndSlide för rörelse
         MoveAndSlide();
     }

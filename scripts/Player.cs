@@ -10,20 +10,11 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSpriteD2");
-		_raycast = GetNode<RayCast2D>("RayCast2D");
-
-		attackTimer = new Timer();
-    	attackTimer.WaitTime = attackInterval;
-    	attackTimer.OneShot = false;
-    	attackTimer.Connect("timeout", new Callable(this, nameof(playerAttack)));
-    	AddChild(attackTimer);
-    	attackTimer.Start();
     }
 
 	public const float Speed = 300.0f;
 
-	private void playerMovement()
-	{
+	private void playerMovement(){
 		if (_animatedSprite == null) // Kontrollera att _animatedSprite inte är null
 		{
 			GD.Print("sprite = null");
@@ -56,30 +47,9 @@ public partial class Player : CharacterBody2D
 		// Uppdatera hastighet och spelares position
 		Velocity = velocity;
 
-		// Uppdatera spelarens position i GlobalData
-		GlobalData globalData = (GlobalData)GetNode("/root/GlobalData"); 
-		globalData.PlayerPosition = GlobalPosition;
-
-	}
-	
-	private void playerAttack()
-	{
-		// Spela attackanimationen
-        _animatedSprite.Play("attack-side-down");
-
-        _raycast.Enabled = true; // Aktivera raycast tillfälligt
-
-        if (_raycast.IsColliding()) // Om RayCast2D träffar något
-        {
-            Node target = _raycast.GetCollider() as Node;
-			if (target != null)
-			{
-    			GD.Print("Hit: ", target.Name);
-			}
-            
-        // logik för att minska hälsan hos fienden
-        }
-		_animatedSprite.Play("idle");
+		// Uppdatera spelarens position i grupen position
+		Vector2 playerPosition = GlobalPosition;
+		GetTree().CallGroup("fiender", "findAndMoveToPlayer", playerPosition);
 	}
 	public override void _PhysicsProcess(double delta)
 	{

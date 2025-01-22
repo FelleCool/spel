@@ -23,6 +23,10 @@ GlobalData="*res://scripts/GlobalData.cs"
 
 project/assembly_name="HungerSurviver_io"
 
+[global_group]
+
+position="wher is the player??"
+
 [input]
 
 left={

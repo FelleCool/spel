@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://1m8nbtkwnw16"]
+
+[ext_resource type="Script" path="res://SwordAttack.cs" id="1_g132r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwf35"]
+size = Vector2(20, 39)
+
+[node name="sword" type="Area2D"]
+script = ExtResource("1_g132r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jwf35")
+
+[node name="Timer" type="Timer" parent="."]

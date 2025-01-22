@@ -388,7 +388,7 @@ height = 62.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n2f23"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["position"]]
 script = ExtResource("1_30ty6")
 attackInterval = 10.0
 metadata/hp = 0
