@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bn4q2ejl36gt6"]
+[gd_scene load_steps=21 format=3 uid="uid://bn4q2ejl36gt6"]
 
+[ext_resource type="Script" path="res://scenes/Explotion.cs" id="1_5c56s"]
 [ext_resource type="Texture2D" uid="uid://dpap3d741xvt2" path="res://assets/Effects/Explosion/Explosions.png" id="1_5u6nd"]
+[ext_resource type="Texture2D" uid="uid://cbs3v5t3s5qmt" path="res://assets/Factions/Goblins/Troops/TNT/Dynamite/Dynamite.png" id="2_f0mu5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0wk3"]
 atlas = ExtResource("1_5u6nd")
@@ -38,6 +40,30 @@ region = Rect2(1344, 0, 192, 192)
 atlas = ExtResource("1_5u6nd")
 region = Rect2(1536, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxg5y"]
+atlas = ExtResource("2_f0mu5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51bma"]
+atlas = ExtResource("2_f0mu5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bifcs"]
+atlas = ExtResource("2_f0mu5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t7jx"]
+atlas = ExtResource("2_f0mu5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gv7b"]
+atlas = ExtResource("2_f0mu5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diww1"]
+atlas = ExtResource("2_f0mu5")
+region = Rect2(320, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_li0v4"]
 animations = [{
 "frames": [{
@@ -71,18 +97,43 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxg5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51bma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bifcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t7jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gv7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diww1")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfqxx"]
-radius = 41.1096
+radius = 26.1725
 
 [node name="explotion" type="Area2D"]
+script = ExtResource("1_5c56s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -0.00400002
 sprite_frames = SubResource("SpriteFrames_li0v4")
-autoplay = "default"
-frame_progress = 0.12232
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.912204
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dfqxx")

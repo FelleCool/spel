@@ -1,14 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://1m8nbtkwnw16"]
 
-[ext_resource type="Script" path="res://SwordAttack.cs" id="1_g132r"]
+[ext_resource type="Script" path="res://scripts/SwordAttack.cs" id="1_bob08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwf35"]
-size = Vector2(20, 39)
+size = Vector2(38, 124.5)
 
-[node name="sword" type="Area2D"]
-script = ExtResource("1_g132r")
+[node name="sword" type="Area2D" groups=["Stats"]]
+script = ExtResource("1_bob08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(74, 1)
 shape = SubResource("RectangleShape2D_jwf35")
+one_way_collision_margin = 0.0
+debug_color = Color(0.901506, 0.00016326, 0.759269, 0.42)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="attack" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]
+[connection signal="timeout" from="attack" to="." method="OnDamageTimerTimeout"]

@@ -1,38 +1,38 @@
 using Godot;
 using System.Collections.Generic;
-using System;
 
 public partial class SwordAttack : Area2D
 {
-	int AttackDamage = 25;
+    private int AttackDamage = 25;
+    private Timer attack;
+    private List<CharacterBody2D> enemiesInArea = new List<CharacterBody2D>(); // Lista för fiender
 
-    // Lista över fiender inom attackområdet
-    List<CharacterBody2D> skib = new List<CharacterBody2D>();
     public override void _Ready()
     {
+        // Hämta Timer-noden från scenen
+        attack = GetNode<Timer>("attack");
     }
 
-    private void OnBodyEntered(Node body)
+    private void OnBodyEntered(CharacterBody2D body)
     {
-        if()
-        {
-			skib.Add();
+        GD.Print($"Body entered: {body.Name}");
+        if (body.Name != "Player"){
+            enemiesInArea.Add(body);
         }
     }
 
-    private void OnBodyExited(Node body)
+    private void OnBodyExited(CharacterBody2D body)
     {
-        if()
-        {
-           skib.Remove(enemy);
-        }
+        GD.Print($"Body exited: {body.Name}");
+
+        enemiesInArea.Remove(body);
     }
 
-    public void Attack()
+    private void OnDamageTimerTimeout()
     {
-        foreach (var enemy in _enemiesInRange)
-        {
-            enemy.TakeDamage(AttackDamage);
+        foreach (EnemyAI enemy in enemiesInArea){
+             enemy.TakeDamage(AttackDamage);
         }
+
     }
 }

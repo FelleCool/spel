@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d151io4e4w363"]
+
+[ext_resource type="Script" path="res://scripts/Enemy_Spawner.cs" id="1_cnh1w"]
+[ext_resource type="PackedScene" uid="uid://bk8yy2mnpogbo" path="res://scenes/enemy.tscn" id="2_083et"]
+[ext_resource type="PackedScene" uid="uid://bbyvf7m261rem" path="res://scenes/enemy_range.tscn" id="3_37blu"]
+
+[node name="enemy_spawner" type="Node2D"]
+script = ExtResource("1_cnh1w")
+radius = 400.0
+EnemyScenes = [ExtResource("2_083et"), ExtResource("3_37blu")]
+
+[node name="temp_spawner" type="Timer" parent="."]
+process_mode = 3
+autostart = true
+
+[connection signal="timeout" from="temp_spawner" to="." method="Spawner"]

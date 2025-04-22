@@ -1,6 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbyvf7m261rem"]
+[gd_scene load_steps=12 format=3 uid="uid://bbyvf7m261rem"]
 
 [ext_resource type="Texture2D" uid="uid://c1e28cu8o1svd" path="res://assets/Factions/Goblins/Troops/TNT/Red/TNT_Red.png" id="1_stlpn"]
+[ext_resource type="Script" path="res://scripts/EnemyRangeAI.cs" id="1_yqjav"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8mk6"]
+radius = 275.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_401do"]
 atlas = ExtResource("1_stlpn")
@@ -52,19 +56,23 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86qym"]
-radius = 277.083
-height = 554.167
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fy6t7"]
+radius = 32.0
+height = 74.0
 
 [node name="enemyRange" type="CharacterBody2D"]
+script = ExtResource("1_yqjav")
+
+[node name="enemyArea" type="Area2D" parent="."]
+
+[node name="attackArea" type="CollisionShape2D" parent="enemyArea"]
+shape = SubResource("CircleShape2D_u8mk6")
+debug_color = Color(0.996322, 0, 0.188967, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2f8xr")
 autoplay = "default"
 frame_progress = 0.201957
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-rotation = -1.5516
-shape = SubResource("CapsuleShape2D_86qym")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fy6t7")
