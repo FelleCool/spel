@@ -1,0 +1,116 @@
+[gd_scene load_steps=17 format=3 uid="uid://crq2wmfjs6md7"]
+
+[ext_resource type="Texture2D" uid="uid://dnmjcs7b7e703" path="res://assets/Factions/Goblins/Buildings/Wood_Tower/Wood_Tower_Red.png" id="1_hvri6"]
+[ext_resource type="Texture2D" uid="uid://c1e28cu8o1svd" path="res://assets/Factions/Goblins/Troops/TNT/Red/TNT_Red.png" id="2_73e5j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7f7b"]
+atlas = ExtResource("1_hvri6")
+region = Rect2(0, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_200nl"]
+atlas = ExtResource("1_hvri6")
+region = Rect2(256, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqd0g"]
+atlas = ExtResource("1_hvri6")
+region = Rect2(512, 0, 256, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0onmq"]
+atlas = ExtResource("1_hvri6")
+region = Rect2(768, 0, 256, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2gq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7f7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_200nl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqd0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0onmq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol0n2"]
+atlas = ExtResource("2_73e5j")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6va1"]
+atlas = ExtResource("2_73e5j")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0go2u"]
+atlas = ExtResource("2_73e5j")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3gkq"]
+atlas = ExtResource("2_73e5j")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijx1j"]
+atlas = ExtResource("2_73e5j")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pduwt"]
+atlas = ExtResource("2_73e5j")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hsark"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol0n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6va1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0go2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3gkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijx1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pduwt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jthoa"]
+size = Vector2(109, 41.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ea7rh"]
+radius = 202.356
+
+[node name="goblin_tower" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h2gq8")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4, -72)
+scale = Vector2(2.61979, 1)
+sprite_frames = SubResource("SpriteFrames_hsark")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 54.75)
+shape = SubResource("RectangleShape2D_jthoa")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 55)
+shape = SubResource("CircleShape2D_ea7rh")

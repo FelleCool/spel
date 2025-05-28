@@ -16,7 +16,6 @@ public partial class EnemyRangeAI : EnemyAI
         else
         {
             Velocity = Vector2.Zero;
-
         }
     }
 
@@ -33,7 +32,8 @@ public partial class EnemyRangeAI : EnemyAI
     }
 
     private PackedScene packedScene;
-    private void attack(){
+    private void attack()
+    {
         GD.Print("Attack"); 
         Node instance = ExplosionScene.Instantiate();
         AddChild(instance);
